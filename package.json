@@ -1,0 +1,18 @@
+{
+  "name": "tsgo-conditional-field-repro",
+  "version": "1.0.0",
+  "description": "Minimal reproduction for tsgo vs tsc difference in class field emission",
+  "scripts": {
+    "build:tsc": "tsc --outDir dist-tsc",
+    "build:tsgo": "tsgo --outDir dist-tsgo",
+    "build": "npm run build:tsc && npm run build:tsgo",
+    "compare": "diff -u dist-tsc/index.js dist-tsgo/src/index.js || true",
+    "test:tsc": "node dist-tsc/test-behavior.js",
+    "test:tsgo": "node dist-tsgo/src/test-behavior.js",
+    "test": "echo '=== tsc output ===' && npm run test:tsc && echo '\n=== tsgo output ===' && npm run test:tsgo"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "@typescript/native-preview": "7.0.0-dev.20260202.1"
+  }
+}
